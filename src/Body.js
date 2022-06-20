@@ -336,10 +336,10 @@ const stock =
 const Body = () => {
 	return (
 		<div className="news">
-			<Container>
+			<Container fluid="sm">
 				<Row className="mt-5">
 					{articles.map((article, index) => (
-						<Col className="d-flex justify-content-center my-4" key={index}>
+						<Col className="d-flex my-4" key={index}>
 							<Card className="cardd">
 								<Card.Img variant="top" src={article.urlToImage || stock} />
 								<Card.Body className="d-flex">

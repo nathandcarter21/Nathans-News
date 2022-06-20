@@ -20,6 +20,12 @@ body,
 }
 .cardd {
 	width: 21rem;
+	padding: 0 !important;
+}
+.col {
+	padding: 0 !important;
+	margin-left: 0 !important;
+	justify-content: center;
 }
 .cardLink {
 	margin-top: auto;
@@ -30,4 +36,25 @@ body,
 }
 .card-text {
 	margin: auto 0 !important;
+}
+.container {
+	min-width: 100vw;
+	padding: 0 !important;
+}
+.row {
+	margin: 0 !important;
+	min-width: 100%;
+}
+.news {
+	width: 100vw;
+}
+@media screen and (min-width: 992px) {
+	.cardd {
+		width: 25rem;
+	}
+}
+@media screen and (max-width: 500px) {
+	.cardd {
+		width: 22rem;
+	}
 }
