@@ -16,7 +16,8 @@ body,
 
 .footer {
 	text-align: center;
-	margin-top: auto;
+	margin-top: auto !important;
+	border-top: 1px solid black !important;
 }
 .cardd {
 	width: 21rem;
