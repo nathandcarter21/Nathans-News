@@ -73,17 +73,17 @@ const articles = [
 const stock =
 	"https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmV3c3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60";
 
-articles.filter((article, index) => {
-	return index < 25;
-});
-
 const Body = () => {
-	const [resNum, setResNum] = useState(25);
+	const [resNum, setResNum] = useState(1);
 	const addMore = () => {
-		if (resNum === 100) {
+		//add filter to use Effect
+		articles.filter((article, index) => {
+			return index < resNum;
+		});
+		if (resNum === 4) {
 			return;
 		}
-		setResNum(resNum + 25);
+		setResNum(resNum + 1);
 	};
 
 	return (
