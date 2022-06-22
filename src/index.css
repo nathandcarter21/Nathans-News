@@ -37,7 +37,8 @@ body,
 .card-text {
 	margin: auto 0 !important;
 }
-.container {
+.container,
+.container-sm {
 	min-width: 100vw;
 	padding: 0 !important;
 }
