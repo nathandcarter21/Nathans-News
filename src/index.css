@@ -1,3 +1,5 @@
+html,
+body,
 .Root,
 .App {
 	min-height: 100vh !important;
@@ -6,7 +8,6 @@
 		sans-serif;
 	display: flex;
 	flex-direction: column;
-	flex-wrap: wrap;
 	padding: 0;
 	margin: 0 !important;
 }
