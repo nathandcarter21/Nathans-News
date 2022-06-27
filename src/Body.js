@@ -77,14 +77,34 @@ const Body = () => {
 		},
 	]);
 	let [rendArticles, setRendArticles] = useState(articles);
+	let [url, setUrl] = useState("stonks");
 
-	const addArticles = () => {
+	const addNumArticles = () => {
+		if (articles.length > numArticles) {
+			setNumArticles(numArticles + 1);
+		}
+	};
+	const loadArticles = () => {
+		console.log("mefaisfhjdshfsh");
 		const res = articles.filter((article, index) => index < numArticles);
 		setRendArticles(res);
 	};
 
 	useEffect(() => {
-		addArticles();
+		if (numArticles === 1) {
+			loadArticles();
+		} else {
+			setNumArticles(1);
+		}
+
+		//loadArticles();wont need this because every time we change data we will also want to set num articles to 1 which will run the other use effect
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [url]);
+	useEffect(() => {
+		loadArticles();
+		//need one to only loadMore when the num changes and need the other use effect for when we need to load new data like when the url changes
+
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [numArticles]);
 
@@ -122,31 +142,20 @@ const Body = () => {
 					onClick={() => {
 						setNumArticles(1);
 					}}>
-					25
+					Back to 25
 				</Button>
-				<Button
-					className=""
-					onClick={() => {
-						setNumArticles(2);
-					}}>
-					50
-				</Button>
-				<Button
-					className=""
-					onClick={() => {
-						setNumArticles(3);
-					}}>
-					75
-				</Button>
-				<Button
-					className=""
-					onClick={() => {
-						setNumArticles(4);
-					}}>
-					100
-				</Button>
-				<Load numArticles={numArticles} />
 			</div>
+			<Load
+				addNumArticles={addNumArticles}
+				numArticles={numArticles}
+				totalArticles={articles.length}
+			/>
+			<Button
+				onClick={() => {
+					setUrl("nah mate");
+				}}>
+				Blow up
+			</Button>
 		</div>
 	);
 };
