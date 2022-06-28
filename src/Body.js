@@ -109,33 +109,28 @@ const Body = () => {
 	}, [numArticles]);
 
 	return (
-		<div className="news">
-			<Container fluid="sm">
-				<Row className="">
-					{rendArticles.map((article, index) => (
-						<Col className="d-flex my-4" key={index}>
-							<Card className="cardd">
-								<Card.Img variant="top" src={article.urlToImage || stock} />
-								<Card.Body className="d-flex">
-									<Card.Title>{article.title}</Card.Title>
-								</Card.Body>
-								<Card.Body className="d-flex">
-									<Card.Text>{article.content.slice(0, 200)}</Card.Text>
-								</Card.Body>
-								<Card.Body className="d-flex">
-									<Card.Link
-										href={article.url}
-										target="_blank"
-										className="btn btn-primary cardLink">
-										Go to article
-									</Card.Link>
-								</Card.Body>
-							</Card>
-						</Col>
-					))}
-				</Row>
-			</Container>
-
+		<div className="body">
+			<div className="news d-flex justify-content-around flex-wrap">
+				{rendArticles.map((article, index) => (
+					<Card className="cardd m-4">
+						<Card.Img variant="top" src={article.urlToImage || stock} />
+						<Card.Body className="d-flex">
+							<Card.Title>{article.title}</Card.Title>
+						</Card.Body>
+						<Card.Body className="d-flex">
+							<Card.Text>{article.content.slice(0, 200)}</Card.Text>
+						</Card.Body>
+						<Card.Body className="d-flex">
+							<Card.Link
+								href={article.url}
+								target="_blank"
+								className="btn btn-primary cardLink">
+								Go to article
+							</Card.Link>
+						</Card.Body>
+					</Card>
+				))}
+			</div>
 			<div className="text-center mb-4">
 				<Button
 					className=""
