@@ -50,3 +50,13 @@ body,
 .news {
 	width: 100%;
 }
+.categoryBtn {
+	background-color: white;
+	border: none;
+	color: #0d6efd;
+	border-bottom: 1px solid white;
+	transition: 0.3s ease-in-out;
+}
+.categoryBtn:hover {
+	border-bottom: 1px solid #0d6efd;
+}

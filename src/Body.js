@@ -1,6 +1,7 @@
 import { Row, Container, Col, Card, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import Load from "./Load";
+import Category from "./Category";
 
 const stock =
 	"https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmV3c3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60";
@@ -110,6 +111,17 @@ const Body = () => {
 
 	return (
 		<div className="body">
+			<div className="categories d-flex justify-content-evenly">
+				<Category category={"business"} />
+				<Category category={"finance"} />
+				<Category category={"cars"} />
+				<Category category={"econ"} />
+				<div className="searchBar">
+					<form action="">
+						<input type="text" placeholder="search" />
+					</form>
+				</div>
+			</div>
 			<div className="news d-flex justify-content-around flex-wrap">
 				{rendArticles.map((article, index) => (
 					<Card className="cardd m-4">
