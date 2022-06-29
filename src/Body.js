@@ -1,4 +1,4 @@
-import { Row, Container, Col, Card, Button } from "react-bootstrap";
+import { Card, Button, Form } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import Load from "./Load";
 import Category from "./Category";
@@ -111,16 +111,12 @@ const Body = () => {
 
 	return (
 		<div className="body">
-			<div className="categories d-flex justify-content-evenly">
-				<Category category={"business"} />
-				<Category category={"finance"} />
-				<Category category={"cars"} />
-				<Category category={"econ"} />
-				<div className="searchBar">
-					<form action="">
-						<input type="text" placeholder="search" />
-					</form>
-				</div>
+			<div className="categories d-flex justify-content-evenly align-items-center flex-wrap ">
+				<Category category={"Business"} />
+				<Category category={"Finance"} />
+				<Category category={"Cars"} />
+				<Category category={"Econ"} />
+				<input type="text" placeholder="Search" className="search mt-4 px-3" />
 			</div>
 			<div className="news d-flex justify-content-around flex-wrap">
 				{rendArticles.map((article, index) => (

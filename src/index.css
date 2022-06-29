@@ -56,7 +56,27 @@ body,
 	color: #0d6efd;
 	border-bottom: 1px solid white;
 	transition: 0.3s ease-in-out;
+	font-size: 1.2em;
 }
-.categoryBtn:hover {
+.categoryBtn:hover,
+.categoryBtn:active,
+.categoryBtn:focus {
 	border-bottom: 1px solid #0d6efd;
+}
+.search {
+	font-size: 1.2em;
+	border-radius: 0% !important;
+	border-top: none !important;
+	border-left: none !important;
+	border-right: none !important;
+	color: #0d6efd !important;
+	border-bottom: 1px solid #0d6efd !important;
+}
+.search:hover,
+.search:active,
+.search:focus {
+	outline: none !important;
+}
+::placeholder {
+	color: #0d6efd !important;
 }
