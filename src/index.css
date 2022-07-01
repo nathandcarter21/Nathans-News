@@ -21,6 +21,7 @@ body,
 	margin-left: 8px;
 	width: 24rem;
 	padding: 0 !important;
+	border: 1px solid rgb(156, 154, 154) !important;
 }
 
 .col {
