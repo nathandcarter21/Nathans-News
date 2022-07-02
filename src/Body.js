@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Load from "./Load";
 import Category from "./Category";
-const url =
-	"https://newsapi.org/v2/everything?q=business&apiKey=76a5bed9e5d34c449994a27be24bcfa7";
+// const url =
+// 	"https://newsapi.org/v2/everything?q=business&apiKey=76a5bed9e5d34c449994a27be24bcfa7";
 
 const stock =
 	"https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmV3c3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60";
@@ -79,72 +79,74 @@ const Body = () => {
 				"Rumors of an Apple electric car project have long excited investors and iPhone enthusiasts. Almost a decade after details of the project leaked, the Cupertino-mobile remains mythicalbut that hasnt st… [+2952 chars]",
 		},
 	]);
-	let [rendArticles, setRendArticles] = useState([]);
-	// let [url, setUrl] = useState("stonks");
 	let [loading, setLoading] = useState(true);
 	let [error, setError] = useState(false);
+	let [url, setUrl] = useState("google.com");
 
 	const addNumArticles = () => {
 		if (articles.length > numArticles) {
 			setNumArticles(numArticles + 1);
 		}
 	};
-	const loadArticles = () => {
-		const res = articles.filter((article, index) => index < numArticles);
-		setRendArticles(res);
-	};
 
+	// useEffect(() => {
+	// 	if (numArticles === 1) {
+	// 		loadArticles();
+	// 	} else {
+	// 		setNumArticles(1);
+	// 	}
+
+	// 	//loadArticles();wont need this because every time we change data we will also want to set num articles to 1 which will run the other use effect
+
+	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
+	// }, [articles]);
+	// useEffect(() => {
+	// 	loadArticles();
+	// 	//need one to only loadMore when the num changes and need the other use effect for when we need to load new data like when the url changes
+
+	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
+	// }, [numArticles]);
+
+	// useEffect(() => {
+	// 	// setLoading(true);
+	// 	// axios
+	// 	// 	.get(url)
+	// 	// 	.then((response) => {
+	// 	// 		console.log(response.data.articles);
+	// 	// 		if (response.data.status !== "ok") {
+	// 	// 			setError(true);
+	// 	// 			throw Error();
+	// 	// 		}
+	// 	// 		setArticles(response.data.articles);
+	// 	// 		setLoading(false);
+	// 	// 	})
+	// 	// 	.catch(() => {
+	// 	// 		console.log("There was an error");
+	// 	// 		setLoading(false);
+	// 	// 		setError(true);
+	// 	// 	});
+	// 	//console.log("fetching data");
+	// 	setLoading(false);
+	// }, []);
 	useEffect(() => {
-		if (numArticles === 1) {
-			loadArticles();
-		} else {
-			setNumArticles(1);
-		}
-
-		//loadArticles();wont need this because every time we change data we will also want to set num articles to 1 which will run the other use effect
-
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [articles]);
-	useEffect(() => {
-		loadArticles();
-		//need one to only loadMore when the num changes and need the other use effect for when we need to load new data like when the url changes
-
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [numArticles]);
-	useEffect(() => {
-		// setLoading(true);
-		// axios
-		// 	.get(url)
-		// 	.then((response) => {
-		// 		console.log(response.data.articles);
-		// 		if (response.data.status !== "ok") {
-		// 			setError(true);
-		// 			throw Error();
-		// 		}
-		// 		setArticles(response.data.articles);
-		// 		setLoading(false);
-		// 	})
-		// 	.catch(() => {
-		// 		console.log("There was an error");
-		// 		setLoading(false);
-		// 		setError(true);
-		// 	});
-		console.log("fetching data");
 		setLoading(false);
-	}, []);
+		console.log(`fetching data from ${url}`);
+	}, [url]);
 
 	if (loading) {
-		return <h1>Is Loading...</h1>;
+		return <h1 className="ms-3">Is Loading...</h1>;
 	} else if (error) {
 		return <h1>Error</h1>;
 	} else {
 		return (
 			<div className="body">
+				<h1 className="text-center">{url}</h1>
 				<div className="categories d-flex justify-content-evenly align-items-center flex-wrap ">
-					<Category category={"Business"} />
-					<Category category={"Finance"} />
-					<Category category={"Crypto"} />
-					<Category category={"Science"} />
+					<Category category={"Business"} setUrl={setUrl} />
+					<Category category={"Crypto"} setUrl={setUrl} />
+					<Category category={"Econ"} setUrl={setUrl} />
+					<Category category={"Finance"} setUrl={setUrl} />
+
 					<input
 						type="text"
 						placeholder="Search"
@@ -152,25 +154,29 @@ const Body = () => {
 					/>
 				</div>
 				<div className="news d-flex justify-content-around flex-wrap">
-					{rendArticles.map((article, index) => (
-						<Card className="cardd m-4" key={index}>
-							<Card.Img variant="top" src={article.urlToImage || stock} />
-							<Card.Body className="d-flex">
-								<Card.Title>{article.title}</Card.Title>
-							</Card.Body>
-							<Card.Body className="d-flex">
-								<Card.Text>{article.content.slice(0, 200)}</Card.Text>
-							</Card.Body>
-							<Card.Body className="d-flex">
-								<Card.Link
-									href={article.url}
-									target="_blank"
-									className="btn btn-primary cardLink">
-									Go to article
-								</Card.Link>
-							</Card.Body>
-						</Card>
-					))}
+					{articles.map((article, index) => {
+						if (index < numArticles) {
+							return (
+								<Card className="cardd m-4" key={index}>
+									<Card.Img variant="top" src={article.urlToImage || stock} />
+									<Card.Body className="d-flex">
+										<Card.Title>{article.title}</Card.Title>
+									</Card.Body>
+									<Card.Body className="d-flex">
+										<Card.Text>{article.content.slice(0, 200)}</Card.Text>
+									</Card.Body>
+									<Card.Body className="d-flex">
+										<Card.Link
+											href={article.url}
+											target="_blank"
+											className="btn btn-primary cardLink">
+											Go to article
+										</Card.Link>
+									</Card.Body>
+								</Card>
+							);
+						}
+					})}
 				</div>
 				<div className="text-center mb-4">
 					<Button
