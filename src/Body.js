@@ -11,12 +11,11 @@ const Body = () => {
 	let [error, setError] = useState(false);
 	let [numArticles, setNumArticles] = useState(20);
 	let [query, setQuery] = useState(null);
-	const API_KEY = process.env.REACT_APP_API_KEY;
 	const BASE_URL = "https://newsapi.org/v2/";
 	const PAGE_SIZE = "&pageSize=100";
 	const COUNTRY = "country=us";
 	let [url, setUrl] = useState(
-		`${BASE_URL}top-headlines?${COUNTRY}${PAGE_SIZE}${API_KEY}`
+		`https://gnews.io/api/v4/top-headlines?lang=en&token=5443b34b13314de46033505e5f155ece`
 	);
 
 	const addNumArticles = () => {
@@ -34,11 +33,13 @@ const Body = () => {
 		axios
 			.get(url)
 			.then((response) => {
-				if (response.data.status !== "ok") {
-					setError(true);
-					throw Error();
-				}
+				// if (response.data.status !== "ok") {
+				// 	setError(true);
+				// 	throw Error();
+				// }
+
 				setArticles(response.data.articles);
+				console.log(response.data.articles);
 				setLoading(false);
 			})
 			.catch(() => {
@@ -77,35 +78,35 @@ const Body = () => {
 				<div className="categories d-flex justify-content-evenly align-items-center flex-wrap ">
 					<Category
 						category={"Business"}
-						setUrl={setUrl}
-						BASE_URL={BASE_URL}
-						PAGE_SIZE={PAGE_SIZE}
-						API_KEY={API_KEY}
-						COUNTRY={COUNTRY}
+						// setUrl={setUrl}
+						// BASE_URL={BASE_URL}
+						// PAGE_SIZE={PAGE_SIZE}
+						// API_KEY={API_KEY}
+						// COUNTRY={COUNTRY}
 					/>
 					<Category
 						category={"Entertainment"}
-						setUrl={setUrl}
-						BASE_URL={BASE_URL}
-						PAGE_SIZE={PAGE_SIZE}
-						API_KEY={API_KEY}
-						COUNTRY={COUNTRY}
+						// setUrl={setUrl}
+						// BASE_URL={BASE_URL}
+						// PAGE_SIZE={PAGE_SIZE}
+						// API_KEY={API_KEY}
+						// COUNTRY={COUNTRY}
 					/>
 					<Category
 						category={"Science"}
-						setUrl={setUrl}
-						BASE_URL={BASE_URL}
-						PAGE_SIZE={PAGE_SIZE}
-						COUNTRY={COUNTRY}
-						API_KEY={API_KEY}
+						// setUrl={setUrl}
+						// BASE_URL={BASE_URL}
+						// PAGE_SIZE={PAGE_SIZE}
+						// API_KEY={API_KEY}
+						// COUNTRY={COUNTRY}
 					/>
 					<Category
 						category={"Sports"}
-						setUrl={setUrl}
-						BASE_URL={BASE_URL}
-						PAGE_SIZE={PAGE_SIZE}
-						API_KEY={API_KEY}
-						COUNTRY={COUNTRY}
+						// setUrl={setUrl}
+						// BASE_URL={BASE_URL}
+						// PAGE_SIZE={PAGE_SIZE}
+						// API_KEY={API_KEY}
+						// COUNTRY={COUNTRY}
 					/>
 				</div>
 
@@ -119,11 +120,11 @@ const Body = () => {
 						Back to 25
 					</Button>
 				</div>
-				<Load
+				{/* <Load
 					addNumArticles={addNumArticles}
 					numArticles={numArticles}
 					totalArticles={articles.length}
-				/>
+				/> */}
 			</div>
 		);
 	}

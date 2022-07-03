@@ -9,12 +9,12 @@ const Articles = ({ articles, numArticles }) => {
 					if (article.content) {
 						return (
 							<Card key={index} className="cardd m-4">
-								<Card.Img variant="top" src={article.urlToImage || stock} />
+								<Card.Img variant="top" src={article.image || stock} />
 								<Card.Body className="d-flex">
 									<Card.Title>{article.title}</Card.Title>
 								</Card.Body>
 								<Card.Body className="d-flex">
-									<Card.Text>{article.content.slice(0, 200)}</Card.Text>
+									<Card.Text>{article.content.slice(0, 253)}</Card.Text>
 								</Card.Body>
 								<Card.Body className="d-flex">
 									<Card.Link
