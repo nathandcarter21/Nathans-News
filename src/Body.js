@@ -15,7 +15,7 @@ const Body = () => {
 	const PAGE_SIZE = "&pageSize=100";
 	const COUNTRY = "country=us";
 	let [url, setUrl] = useState(
-		`https://gnews.io/api/v4/top-headlines?lang=en&token=5443b34b13314de46033505e5f155ece`
+		`https://gnews.io/api/v4/top-headlines?lang=en&token=${process.env.REACT_APP_MY_API_KEY}`
 	);
 
 	const addNumArticles = () => {
@@ -68,9 +68,9 @@ const Body = () => {
 						size="sm"
 						className="mx-3"
 						onClick={() => {
-							if (query !== null && query !== "") {
-								setUrl(`google.com/${query}`);
-							}
+							// if (query !== null && query !== "") {
+							// 	setUrl(`google.com/${query}`);
+							// }
 						}}>
 						Search
 					</Button>
