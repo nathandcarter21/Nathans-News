@@ -1,5 +1,6 @@
 import PageNavbar from "./Navbar";
 import Footer from "./Footer";
+import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Body from "./Body";
 
