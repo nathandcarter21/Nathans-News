@@ -18,11 +18,11 @@ const Body = () => {
 		`https://gnews.io/api/v4/top-headlines?lang=en&token=${process.env.REACT_APP_MY_API_KEY}`
 	);
 
-	const addNumArticles = () => {
-		if (articles.length > numArticles) {
-			setNumArticles(numArticles + 20);
-		}
-	};
+	// const addNumArticles = () => {
+	// 	if (articles.length > numArticles) {
+	// 		setNumArticles(numArticles + 20);
+	// 	}
+	// };
 
 	const getQuery = (value) => {
 		setQuery(value.target.value);
