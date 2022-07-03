@@ -78,11 +78,16 @@ const Body = () => {
 	let [error, setError] = useState(false);
 	let [url, setUrl] = useState("google.com");
 	let [numArticles, setNumArticles] = useState(1);
+	let [query, setQuery] = useState(null);
 
 	const addNumArticles = () => {
 		if (articles.length > numArticles) {
 			setNumArticles(numArticles + 1);
 		}
+	};
+
+	const getQuery = (value) => {
+		setQuery(value.target.value);
 	};
 	useEffect(() => {
 		setNumArticles(1);
@@ -101,7 +106,7 @@ const Body = () => {
 		// 		setLoading(false);
 		// 		setError(true);
 		// 	});
-		console.log("fetching data");
+		console.log(`fetching data for ${url}`);
 		setLoading(false);
 	}, [url]);
 
@@ -111,24 +116,33 @@ const Body = () => {
 		return (
 			<h1 className="text-center">
 				Error!!! This is likely due to too many requests to the server. Please
-				come back later :)
+				come back later
 			</h1>
 		);
 	} else {
 		return (
 			<div className="body">
+				<div className="searchBar d-flex justify-content-end">
+					<input type="text" className="search" onChange={getQuery} />
+					<Button
+						variant="outline-primary"
+						size="sm"
+						className="ms-3"
+						onClick={() => {
+							if (query !== null && query !== "") {
+								setUrl(`google.com/${query}`);
+							}
+						}}>
+						Search
+					</Button>
+				</div>
 				<div className="categories d-flex justify-content-evenly align-items-center flex-wrap ">
 					<Category category={"Business"} setUrl={setUrl} />
 					<Category category={"Crypto"} setUrl={setUrl} />
 					<Category category={"Econ"} setUrl={setUrl} />
 					<Category category={"Finance"} setUrl={setUrl} />
-
-					<input
-						type="text"
-						placeholder="Search"
-						className="search mt-4 mx-3"
-					/>
 				</div>
+
 				<Articles articles={articles} numArticles={numArticles} />
 				<div className="text-center mb-4">
 					<Button
