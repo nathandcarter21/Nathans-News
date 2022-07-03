@@ -31,21 +31,25 @@ const Body = () => {
 	useEffect(() => {
 		setNumArticles(20);
 		setLoading(true);
-		axios
-			.get(url)
-			.then((response) => {
-				if (response.data.status !== "ok") {
-					setError(true);
-					throw Error();
-				}
-				setArticles(response.data.articles);
-				setLoading(false);
-			})
-			.catch(() => {
-				console.log("There was an error");
-				setLoading(false);
-				setError(true);
-			});
+		// axios
+		// 	.get(url)
+		// 	.then((response) => {
+		// 		if (response.data.status !== "ok") {
+		// 			setError(true);
+		// 			throw Error();
+		// 		}
+		// 		setArticles(response.data.articles);
+		// 		setLoading(false);
+		// 	})
+		// 	.catch(() => {
+		// 		console.log("There was an error");
+		// 		setLoading(false);
+		// 		setError(true);
+		// 	});
+		axios.get("/api").then((res) => {
+			setArticles(res.data);
+			setLoading(false);
+		});
 	}, [url]);
 
 	if (loading) {

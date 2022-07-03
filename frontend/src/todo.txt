@@ -1,0 +1,12 @@
+1 two different use effects. one for changing number of articles and one for whenever you need to fetch data
+2 actually fetch data in use effect
+3 trigger use effect anytime the url changes to fetch new data. set num articles to be 1. if already 1, manually call load more articles function
+4 add buttons for different categories as well as a search bar in nav and maybe a time period
+5 maybe at bottom add a number of articles showing and total articles
+6 turn load more button into a spinner if the data is being loaded by passing props
+7 create a failed page
+8 proper footer and navbar
+9 Nthans news is loading in nav maybe
+10 break each article into individual component, if index is greater than numArticles, return nothing
+11 add class to selected category so it stays highlighted when you click away
+12 clean up code
