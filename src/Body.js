@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Category from "./Category";
 import Articles from "./Articles";
+import Error from "./Error";
 
 const Body = () => {
 	let [articles, setArticles] = useState([]);
@@ -36,7 +37,6 @@ const Body = () => {
 				setLoading(false);
 			})
 			.catch(() => {
-				console.log("There was an error");
 				setLoading(false);
 				setError(true);
 			});
@@ -45,12 +45,7 @@ const Body = () => {
 	if (loading) {
 		return <h1 className="mx-3">Is Loading...</h1>;
 	} else if (error || articles.length === 0) {
-		return (
-			<h1 className="text-center">
-				Error!!! This is likely due to too many requests to the server. Please
-				come back later
-			</h1>
-		);
+		return <Error />;
 	} else {
 		return (
 			<div className="body">
