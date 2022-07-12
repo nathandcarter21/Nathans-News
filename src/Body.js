@@ -10,9 +10,10 @@ const Body = () => {
 	let [loading, setLoading] = useState(true);
 	let [error, setError] = useState(false);
 	let [query, setQuery] = useState(null);
-	const BASE_URL = "https://gnews.io/api/v4/top-headlines?lang=en&";
+	const BASE_URL = "https://gnews.io/api/v4/";
+	const LANG = "?lang=en&";
 	const API_KEY = `token=${process.env.REACT_APP_MY_API_KEY}`;
-	let [url, setUrl] = useState(`${BASE_URL}${API_KEY}`);
+	let [url, setUrl] = useState(`${BASE_URL}top-headlines${LANG}${API_KEY}`);
 
 	const getQuery = (value) => {
 		setQuery(value.target.value);
@@ -20,7 +21,7 @@ const Body = () => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		if (query !== null && query !== "") {
-			setUrl(`${BASE_URL}q=${query}&${API_KEY}`);
+			setUrl(`${BASE_URL}search${LANG}q=${query}&${API_KEY}`);
 		}
 	};
 	useEffect(() => {
@@ -67,23 +68,27 @@ const Body = () => {
 						setUrl={setUrl}
 						BASE_URL={BASE_URL}
 						API_KEY={API_KEY}
+						LANG={LANG}
 					/>
 					<Category
 						category={"Business"}
 						setUrl={setUrl}
 						BASE_URL={BASE_URL}
+						LANG={LANG}
 						API_KEY={API_KEY}
 					/>
 					<Category
 						category={"Entertainment"}
 						setUrl={setUrl}
 						BASE_URL={BASE_URL}
+						LANG={LANG}
 						API_KEY={API_KEY}
 					/>
 					<Category
 						category={"Science"}
 						setUrl={setUrl}
 						BASE_URL={BASE_URL}
+						LANG={LANG}
 						API_KEY={API_KEY}
 					/>
 				</div>
