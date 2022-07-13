@@ -85,3 +85,6 @@ body,
 	height: 75px !important;
 	margin: auto auto;
 }
+a.text-muted {
+	text-decoration: none;
+}

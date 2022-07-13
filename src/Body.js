@@ -4,12 +4,14 @@ import axios from "axios";
 import Category from "./Category";
 import Articles from "./Articles";
 import Error from "./Error";
+import Search from "./Search";
 
 const Body = () => {
 	let [articles, setArticles] = useState([]);
 	let [loading, setLoading] = useState(true);
 	let [error, setError] = useState(false);
 	let [query, setQuery] = useState("");
+	let [oldQuery, setOldQuery] = useState("");
 	let [currCategory, setCurrCategory] = useState("Breaking News");
 	const BASE_URL = "https://gnews.io/api/v4/";
 	const LANG = "?lang=en&";
@@ -21,9 +23,14 @@ const Body = () => {
 	};
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		if (query !== "") {
+		if (query === "") {
+			setUrl(`${BASE_URL}top-headlines${LANG}topic=breaking-news&${API_KEY}`);
+			setCurrCategory("Breaking News");
+			setOldQuery("");
+		} else if (query !== "") {
 			setUrl(`${BASE_URL}search${LANG}q=${query}&${API_KEY}`);
 			setCurrCategory(null);
+			setOldQuery(query);
 		}
 	};
 	useEffect(() => {
@@ -50,27 +57,18 @@ const Body = () => {
 	} else if (error) {
 		return <Error />;
 	} else if (articles.length === 0) {
-		return <h1>No Content</h1>;
+		return (
+			<div className="no-content">
+				<Search query={query} getQuery={getQuery} handleSubmit={handleSubmit} />
+				<h2 className="text-center mt-3">
+					Your search for "{oldQuery}" did not match any documents.
+				</h2>
+			</div>
+		);
 	} else {
 		return (
 			<div className="body">
-				<div className="searchBar d-flex justify-content-end mt-3">
-					<form onSubmit={handleSubmit}>
-						<input
-							type="text"
-							className="search"
-							value={query}
-							onChange={getQuery}
-						/>
-						<Button
-							variant="outline-primary"
-							size="sm"
-							className="mx-3"
-							onClick={handleSubmit}>
-							Search
-						</Button>
-					</form>
-				</div>
+				<Search query={query} getQuery={getQuery} handleSubmit={handleSubmit} />
 				<div className="categories d-flex justify-content-evenly align-items-center flex-wrap ">
 					<Category
 						category={"Breaking News"}
