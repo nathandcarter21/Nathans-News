@@ -60,8 +60,7 @@ body,
 	font-size: 1.2em;
 }
 .categoryBtn:hover,
-.categoryBtn:active,
-.categoryBtn:focus {
+.categoryBtnActive {
 	border-bottom: 1px solid #0d6efd;
 }
 .search {
@@ -80,4 +79,9 @@ body,
 }
 ::placeholder {
 	color: #0d6efd !important;
+}
+.spin {
+	width: 75px !important;
+	height: 75px !important;
+	margin: auto auto;
 }

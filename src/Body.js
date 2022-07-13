@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Category from "./Category";
@@ -9,7 +9,8 @@ const Body = () => {
 	let [articles, setArticles] = useState([]);
 	let [loading, setLoading] = useState(true);
 	let [error, setError] = useState(false);
-	let [query, setQuery] = useState(null);
+	let [query, setQuery] = useState("");
+	let [currCategory, setCurrCategory] = useState("Breaking News");
 	const BASE_URL = "https://gnews.io/api/v4/";
 	const LANG = "?lang=en&";
 	const API_KEY = `token=${process.env.REACT_APP_MY_API_KEY}`;
@@ -20,8 +21,9 @@ const Body = () => {
 	};
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		if (query !== null && query !== "") {
+		if (query !== "") {
 			setUrl(`${BASE_URL}search${LANG}q=${query}&${API_KEY}`);
+			setCurrCategory(null);
 		}
 	};
 	useEffect(() => {
@@ -44,15 +46,22 @@ const Body = () => {
 	}, [url]);
 
 	if (loading) {
-		return <h1 className="mx-3">Is Loading...</h1>;
-	} else if (error || articles.length === 0) {
+		return <Spinner className=" spin" animation="border" variant="primary" />;
+	} else if (error) {
 		return <Error />;
+	} else if (articles.length === 0) {
+		return <h1>No Content</h1>;
 	} else {
 		return (
 			<div className="body">
 				<div className="searchBar d-flex justify-content-end mt-3">
 					<form onSubmit={handleSubmit}>
-						<input type="text" className="search" onChange={getQuery} />
+						<input
+							type="text"
+							className="search"
+							value={query}
+							onChange={getQuery}
+						/>
 						<Button
 							variant="outline-primary"
 							size="sm"
@@ -69,6 +78,9 @@ const Body = () => {
 						BASE_URL={BASE_URL}
 						API_KEY={API_KEY}
 						LANG={LANG}
+						currCategory={currCategory}
+						setCurrCategory={setCurrCategory}
+						setQuery={setQuery}
 					/>
 					<Category
 						category={"Business"}
@@ -76,6 +88,9 @@ const Body = () => {
 						BASE_URL={BASE_URL}
 						LANG={LANG}
 						API_KEY={API_KEY}
+						currCategory={currCategory}
+						setCurrCategory={setCurrCategory}
+						setQuery={setQuery}
 					/>
 					<Category
 						category={"Entertainment"}
@@ -83,6 +98,9 @@ const Body = () => {
 						BASE_URL={BASE_URL}
 						LANG={LANG}
 						API_KEY={API_KEY}
+						currCategory={currCategory}
+						setCurrCategory={setCurrCategory}
+						setQuery={setQuery}
 					/>
 					<Category
 						category={"Science"}
@@ -90,6 +108,9 @@ const Body = () => {
 						BASE_URL={BASE_URL}
 						LANG={LANG}
 						API_KEY={API_KEY}
+						currCategory={currCategory}
+						setCurrCategory={setCurrCategory}
+						setQuery={setQuery}
 					/>
 				</div>
 
