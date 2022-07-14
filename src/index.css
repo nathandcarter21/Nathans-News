@@ -3,9 +3,7 @@ body,
 .Root,
 .App {
 	min-height: 100vh !important;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-		sans-serif;
+	font-family: "Quicksand", sans-serif;
 	display: flex;
 	flex-direction: column;
 	padding: 0;
@@ -87,4 +85,17 @@ body,
 }
 a.text-muted {
 	text-decoration: none;
+}
+.searchBar {
+	justify-content: end;
+}
+@media screen and (max-width: 475px) {
+	.categoryBtn {
+		font-size: 1.4em;
+	}
+}
+@media screen and (min-width: 800px) {
+	.categoryBtn {
+		font-size: 1.8em;
+	}
 }
