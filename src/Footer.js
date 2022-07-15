@@ -4,11 +4,11 @@ const Footer = () => {
 	return (
 		<Container className="d-flex flex-row py-3 footer">
 			<Row className="justify-content-center">
-				<Col className="text-center text-muted">
+				<Col className="text-center text-muted d-flex align-items-center">
 					<p className="foot mb-0">Nathan's News 2022</p>
 				</Col>
 
-				<Col className="text-center text-muted d-flex">
+				<Col className="text-center text-muted d-flex align-items-center">
 					<a
 						href="https://www.linkedin.com/in/nathan-carter-a7b573211"
 						className="foot linked mb-0 text-muted justify-content-center">
@@ -23,7 +23,7 @@ const Footer = () => {
 						</svg>
 					</a>
 				</Col>
-				<Col className="text-center text-muted d-flex">
+				<Col className="text-center text-muted d-flex align-items-center">
 					<a
 						href="https://www.instagram.com/nathan.carter21/"
 						className="foot ig mb-0 text-muted justify-content-center">
