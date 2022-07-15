@@ -19,7 +19,7 @@ const Body = () => {
 	let [url, setUrl] = useState(`${BASE_URL}top-headlines${LANG}${API_KEY}`);
 
 	const getQuery = (value) => {
-		setQuery(value.target.value);
+		setQuery(value.target.value.replace(/[^0-9a-z]/gi, ""));
 	};
 	const handleSubmit = (event) => {
 		event.preventDefault();

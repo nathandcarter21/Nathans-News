@@ -6,7 +6,7 @@ const Articles = ({ articles }) => {
 		<div className="articles d-flex justify-content-around flex-wrap">
 			{articles.map((article, index) => {
 				return (
-					<Card key={index} className="cardd m-4">
+					<Card key={index} className="cardContainer m-4">
 						<Card.Img variant="top" src={article.image || stock} />
 						<Card.Body className="d-flex">
 							<Card.Title>{article.title}</Card.Title>

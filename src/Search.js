@@ -6,7 +6,7 @@ const Search = ({ handleSubmit, query, getQuery }) => {
 				<input
 					type="text"
 					className="search"
-					value={query}
+					value={query.replace(/[^0-9a-z]/gi, "")}
 					onChange={getQuery}
 				/>
 				<Button

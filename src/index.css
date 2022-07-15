@@ -9,13 +9,19 @@ body,
 	padding: 0;
 	margin: 0 !important;
 }
-
+.title,
+.title:hover,
+.title:active {
+	text-decoration: none;
+	color: black;
+	font-size: 2.28em;
+}
 .footer {
 	text-align: center;
 	margin-top: auto !important;
 	border-top: 1px solid black !important;
 }
-.cardd {
+.cardContainer {
 	margin-left: 8px;
 	width: 24rem;
 	padding: 0 !important;
