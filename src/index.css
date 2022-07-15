@@ -89,6 +89,12 @@ a.text-muted {
 .searchBar {
 	justify-content: end;
 }
+a.linked:hover {
+	color: #0a66c2 !important;
+}
+a.ig:hover {
+	color: #833ab4 !important;
+}
 @media screen and (max-width: 475px) {
 	.categoryBtn {
 		font-size: 1.4em;

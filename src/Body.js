@@ -38,15 +38,11 @@ const Body = () => {
 		axios
 			.get(url)
 			.then((response) => {
-				// if (response.data.status !== "ok") {
-				// 	setError(true);
-				// 	throw Error();
-				// }
-
 				setArticles(response.data.articles);
 				setLoading(false);
+				setError(false);
 			})
-			.catch(() => {
+			.catch((e) => {
 				setLoading(false);
 				setError(true);
 			});
@@ -55,7 +51,12 @@ const Body = () => {
 	if (loading) {
 		return <Spinner className=" spin" animation="border" variant="primary" />;
 	} else if (error) {
-		return <Error />;
+		return (
+			<Error
+				message="Sorry! Something went wrong! This is likely due to too many requests to
+		the server. Please come back later!"
+			/>
+		);
 	} else if (articles.length === 0) {
 		return (
 			<div className="no-content">
