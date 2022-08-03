@@ -4,7 +4,6 @@ const Category = ({
 	BASE_URL,
 	API_KEY,
 	LANG,
-	toggleClass,
 	currCategory,
 	setCurrCategory,
 	setQuery,

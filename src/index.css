@@ -16,44 +16,25 @@ body,
 	color: black;
 	font-size: 2.28em;
 }
-.footer {
-	text-align: center;
-	margin-top: auto !important;
-	border-top: 1px solid black !important;
+.searchBar {
+	justify-content: end;
 }
-.cardContainer {
-	margin-left: 8px;
-	width: 24rem;
-	padding: 0 !important;
-	border: 1px solid rgb(156, 154, 154) !important;
+.search:hover,
+.search:active,
+.search:focus {
+	outline: none !important;
 }
-
-.col {
-	padding: 0 !important;
-	margin-left: 0 !important;
-	justify-content: center;
+.search {
+	font-size: 1.2em;
+	border-radius: 0% !important;
+	border-top: none !important;
+	border-left: none !important;
+	border-right: none !important;
+	color: #0d6efd !important;
+	border-bottom: 1px solid #0d6efd !important;
 }
-.cardLink {
-	margin-top: auto;
-}
-
-.card-title {
-	margin: auto 0 !important;
-}
-.card-text {
-	margin: auto 0 !important;
-}
-.container,
-.container-sm {
-	min-width: 100%;
-	padding: 0 !important;
-}
-.row {
-	margin: 0 !important;
-	width: 100%;
-}
-.news {
-	width: 100%;
+::placeholder {
+	color: #0d6efd !important;
 }
 .categoryBtn {
 	background-color: white;
@@ -67,22 +48,37 @@ body,
 .categoryBtnActive {
 	border-bottom: 1px solid #0d6efd;
 }
-.search {
-	font-size: 1.2em;
-	border-radius: 0% !important;
-	border-top: none !important;
-	border-left: none !important;
-	border-right: none !important;
-	color: #0d6efd !important;
-	border-bottom: 1px solid #0d6efd !important;
+.news {
+	width: 100%;
 }
-.search:hover,
-.search:active,
-.search:focus {
-	outline: none !important;
+.container,
+.container-sm {
+	min-width: 100%;
+	padding: 0 !important;
 }
-::placeholder {
-	color: #0d6efd !important;
+.row {
+	margin: 0 !important;
+	width: 100%;
+}
+.col {
+	padding: 0 !important;
+	margin-left: 0 !important;
+	justify-content: center;
+}
+.cardContainer {
+	margin-left: 8px;
+	width: 24rem;
+	padding: 0 !important;
+	border: 1px solid rgb(156, 154, 154) !important;
+}
+.card-title {
+	margin: auto 0 !important;
+}
+.card-text {
+	margin: auto 0 !important;
+}
+.cardLink {
+	margin-top: auto;
 }
 .spin {
 	width: 75px !important;
@@ -92,14 +88,16 @@ body,
 a.text-muted {
 	text-decoration: none;
 }
-.searchBar {
-	justify-content: end;
-}
 a.linked:hover {
 	color: #0a66c2 !important;
 }
 a.ig:hover {
 	color: #833ab4 !important;
+}
+.footer {
+	text-align: center;
+	margin-top: auto !important;
+	border-top: 1px solid black !important;
 }
 @media screen and (max-width: 475px) {
 	.categoryBtn {

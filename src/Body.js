@@ -7,32 +7,31 @@ import Error from "./Error";
 import Search from "./Search";
 
 const Body = () => {
+	const BASE_URL = "https://gnews.io/api/v4/";
+	const LANG = "?lang=en&";
+	const API_KEY = `token=${process.env.REACT_APP_MY_API_KEY}`;
 	let [articles, setArticles] = useState([]);
 	let [loading, setLoading] = useState(true);
 	let [error, setError] = useState(false);
 	let [query, setQuery] = useState("");
-	let [oldQuery, setOldQuery] = useState("");
 	let [currCategory, setCurrCategory] = useState("Breaking News");
-	const BASE_URL = "https://gnews.io/api/v4/";
-	const LANG = "?lang=en&";
-	const API_KEY = `token=${process.env.REACT_APP_MY_API_KEY}`;
 	let [url, setUrl] = useState(`${BASE_URL}top-headlines${LANG}${API_KEY}`);
 
 	const getQuery = (value) => {
 		setQuery(value.target.value.replace(/[^0-9a-z]/gi, ""));
 	};
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		if (query === "") {
 			setUrl(`${BASE_URL}top-headlines${LANG}topic=breaking-news&${API_KEY}`);
 			setCurrCategory("Breaking News");
-			setOldQuery("");
 		} else if (query !== "") {
 			setUrl(`${BASE_URL}search${LANG}q=${query}&${API_KEY}`);
 			setCurrCategory(null);
-			setOldQuery(query);
 		}
 	};
+
 	useEffect(() => {
 		setLoading(true);
 		axios
@@ -62,7 +61,7 @@ const Body = () => {
 			<div className="no-content">
 				<Search query={query} getQuery={getQuery} handleSubmit={handleSubmit} />
 				<h2 className="text-center mt-3">
-					Your search for "{oldQuery}" did not match any documents.
+					Your search did not match any documents.
 				</h2>
 			</div>
 		);
